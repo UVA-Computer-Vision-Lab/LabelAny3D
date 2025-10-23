@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="LabelAny3D: Label Any Object 3D in the Wild">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabelAny3D: Label Any Object 3D in the Wild</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">LabelAny3D: Label Any Object 3D in the Wild</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block" style="margin-right: 1.5em;"><a href="https://yaojin17.github.io/" target="_blank">Jin Yao</a><sup>*</sup></span>
+            <span class="author-block" style="margin-right: 1.5em;"><a href="https://scholar.google.com/citations?user=066_RcMAAAAJ&hl=en" target="_blank">Radowan Mahmud Redoy</a><sup>*</sup></span>
+            <span class="author-block" style="margin-right: 1.5em;"><a href="https://www.cs.virginia.edu/~se4ja/" target="_blank">Sebastian Elbaum</a></span>
+            <span class="author-block" style="margin-right: 1.5em;"><a href="https://matthewbdwyer.github.io/" target="_blank">Matthew B. Dwyer</a></span>
+            <span class="author-block"><a href="https://sites.google.com/site/zezhoucheng/" target="_blank">Zezhou Cheng</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">University of Virginia</span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top: 0.5rem; color: #666;">
+            <span>* Equal contribution</span>
+          </div>
+
+          <div class="is-size-5 publication-authors" style="margin-top: 0.5em;">
+            <b>NeurIPS 2025</b>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./LabelAny3D_webpage.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark"
+                   style="pointer-events: none; opacity: 0.5;">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark"
+                   style="pointer-events: none; opacity: 0.5;">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>GitHub</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes dash-animation {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -100;
+    }
+  }
+
+  .construction-box {
+    position: relative;
+    display: inline-block;
+    background-color: #fafafa;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+  }
+
+  .construction-box svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .construction-box rect {
+    fill: none;
+    stroke-width: 3;
+    stroke-dasharray: 10 5 10 5;
+    stroke: url(#gradient);
+    animation: dash-animation 2s linear infinite;
+    rx: 8;
+  }
+
+  .construction-box span {
+    position: relative;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+</style>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered" style="margin-bottom: 2rem;">
+      <div class="construction-box">
+        <svg>
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+              <stop offset="25%" style="stop-color:#feca57;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#48dbfb;stop-opacity:1" />
+              <stop offset="75%" style="stop-color:#ff9ff3;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" />
+        </svg>
+        <span>🚧 Page Under Construction 👷‍♂️</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/photocollage-1.png" alt="COCO3D Samples" style="width: 100%; display: block; margin: 0 auto;">
+      <h2 class="subtitle has-text-centered" style="margin-top: 1em;">
+        Samples from our proposed <strong>COCO3D</strong> benchmark.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Detecting objects in 3D space from monocular input is crucial for applications ranging from robotics to scene understanding.
+            Despite advanced performance in the indoor and autonomous driving domains, existing monocular 3D detection models struggle with in-the-wild images due to the lack of 3D in-the-wild datasets and the challenges of 3D annotation.
+            We introduce <strong>LabelAny3D</strong>, an <em>analysis-by-synthesis</em> framework that reconstructs holistic 3D scenes from 2D images to efficiently produce high-quality 3D bounding box annotations.
+            Built on this pipeline, we present <strong>COCO3D</strong>, a new benchmark for open-vocabulary monocular 3D detection, derived from the MS-COCO dataset and covering a wide range of object categories absent from existing 3D datasets.
+            Experiments show that annotations generated by LabelAny3D improve monocular 3D detection performance across multiple benchmarks, outperforming prior auto-labeling approaches in quality.
+            These results demonstrate the promise of foundation-model-driven annotation for scaling up 3D recognition in realistic, open-world settings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">LabelAny3D Pipeline</h2>
+        <figure>
+          <img src="static/images/main_teaser-1.png" alt="LabelAny3D Pipeline" style="width: 100%; display: block; margin: 0 auto;">
+          <figcaption>
+            <div class="content has-text-justified">
+              <p>
+                <strong>(a)</strong> Given an image, we first extract high-resolution object crops;
+                <strong>(b)</strong> A holistic 3D scene is then built from robust depth estimation, 3D object reconstruction, and 2D-3D alignment algorithms.
+                <strong>(c)</strong> Lastly, 3D labels can be easily extracted from the reconstructed 3D scene.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Model Performance</h2>
+        <figure>
+          <img src="static/images/Model_performance-1.png" alt="Model Performance" style="width: 100%; display: block; margin: 0 auto;">
+          <figcaption>
+            <div class="content has-text-justified" style="margin-top: 1em;">
+              <p>
+                Performance comparison of models trained on COCO3D annotations across multiple benchmarks.
+                Our LabelAny3D-generated annotations enable strong performance on diverse 3D detection tasks.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title" style="margin-top: 1em;">Citation</h2>
+    <pre><code>@inproceedings{yao2025labelany3d,
+  title={LabelAny3D: Label Any Object 3D in the Wild},
+  author={Jin Yao and Radowan Mahmud Redoy and Sebastian Elbaum and Matthew B. Dwyer and Zezhou Cheng},
+  booktitle={Neural Information Processing Systems (NeurIPS)},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://uva-computer-vision-lab.github.io/LabelAny3D/" class="external-link">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed
+            under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
