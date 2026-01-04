@@ -1,0 +1,27 @@
+# folders or files
+datasets/*
+cubercnn/modeling/backbone/checkpoint_weights/*
+.vscode/
+.ipynb_checkpoints/
+.idea/
+output/
+cubercnn/external/
+slurm/
+datasets
+unused/
+checkpoints/
+ovmono3d_data/
+ovmono3d
+# filetypes
+*.pyc
+*.mexa64
+*/output/*
+*/output*/*
+*~
+*.so
+*.ipynb
+*.pth
+*.zip
+
+plots/neurips_model_comparison/
+plots/selected_neurips_model_comparison/
