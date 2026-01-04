@@ -1,0 +1,37 @@
+# Core
+numpy==1.24.4
+scipy==1.14.0
+tqdm==4.65.2
+matplotlib==3.9.0
+opencv-python==4.10.0.84
+loguru==0.7.2
+
+# ML frameworks
+accelerate==0.31.0
+transformers==4.42.3
+huggingface-hub==0.36.0
+datasets==2.19.0
+einops==0.8.0
+
+# 3D processing
+trimesh[all]==4.4.1
+plyfile==1.0.3
+pygltflib==1.16.2
+PyMCubes==0.1.4
+
+# Image processing
+scikit-learn==1.5.0
+scikit-image==0.24.0
+rembg[gpu,cli]==2.0.57
+albumentations==2.0.0
+kornia==0.7.3
+dl_ext==1.3.4
+
+# Config
+omegaconf==2.3.0
+
+# Build tools
+ninja==1.11.1.1
+
+# 3D utilities
+git+https://github.com/EasternJournalist/utils3d.git@3913c65d81e05e47b9f367250cf8c0f7462a0900 

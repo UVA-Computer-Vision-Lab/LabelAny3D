@@ -1,0 +1,11 @@
+{   
+    "include": [
+        "moge", 
+        "utils3d",
+        "infer.py",
+        "app.py"
+    ],
+    "ignore": [
+        "**"
+    ]
+}
