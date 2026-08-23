@@ -6,8 +6,6 @@ import torch
 import json
 
 sys.path.append('../external/mast3r')
-from mast3r.model import AsymmetricMASt3R
-from dust3r.utils.image import load_images
 # print(sys.path)
 sys.path.append('./')
 from matching.renderer import GLBRenderer
@@ -23,12 +21,25 @@ def setup_device():
         device = torch.device("cpu")
     return device
 
-def load_model(device):
-    """Load MAST3R model"""
+def load_model(device, matcher='mast3r'):
+    """Load the 2D-2D matching model: 'mast3r' (default) or 'roma'."""
+    if matcher == 'roma':
+        from matching.roma_backend import RomaBackend
+        return RomaBackend(device)
+    if matcher != 'mast3r':
+        raise ValueError(f"Unknown matcher '{matcher}'. Use 'mast3r' or 'roma'.")
+    from mast3r.model import AsymmetricMASt3R
     model_name = "naver/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric"
     model = AsymmetricMASt3R.from_pretrained(model_name).to(device)
     model.eval()
     return model
+
+
+def _load_ref_image(path, matcher):
+    if getattr(matcher, 'use_roma', False):
+        return None
+    from dust3r.utils.image import load_images
+    return load_images([path], 512, verbose=False)[0]
 
 
 def process_object(object_name, project_root, model):
@@ -58,7 +69,7 @@ def process_object(object_name, project_root, model):
         unprocessed_img0_path = f'{project_root}/crops/{object_name}_reproj.png'
     unprocessed_img0 = cv2.imread(unprocessed_img0_path, cv2.IMREAD_UNCHANGED)
     unprocessed_img0 = cv2.cvtColor(unprocessed_img0, cv2.COLOR_BGRA2RGBA)
-    ref_img = load_images([unprocessed_img0_path], 512, verbose=False)[0]
+    ref_img = _load_ref_image(unprocessed_img0_path, matcher)
 
     # Process each view
     all_points_world = None
@@ -70,9 +81,11 @@ def process_object(object_name, project_root, model):
         R = Rs[i].cpu().numpy()
         T = Ts[i].cpu().numpy()
         
-        render_img = load_images([f'{render_dir}/rgb_{i}.png'], 512, verbose=False)[0]
+        render_path = f'{render_dir}/rgb_{i}.png'
+        render_img = _load_ref_image(render_path, matcher)
         points_world, unprocessed_matches0 = matcher.get_correspondences(
-            ref_img, render_img, unprocessed_img0, rgb_18, depth, T, R
+            ref_img, render_img, unprocessed_img0, rgb_18, depth, T, R,
+            path_0=unprocessed_img0_path, path_1=render_path
         )
         
         if all_points_world is None:
@@ -116,9 +129,11 @@ def process_object(object_name, project_root, model):
         R = cameras.R.cpu().numpy()
         T = cameras.T.cpu().numpy()
         
-        render_img = load_images([f'{render_dir}/rgb_iter1.png'], 512, verbose=False)[0]
+        render_path = f'{render_dir}/rgb_iter1.png'
+        render_img = _load_ref_image(render_path, matcher)
         points_world, unprocessed_matches0 = matcher.get_correspondences(
-            ref_img, render_img, unprocessed_img0, rgb_18, depth, T, R
+            ref_img, render_img, unprocessed_img0, rgb_18, depth, T, R,
+            path_0=unprocessed_img0_path, path_1=render_path
         )
         image_camera_intrinsic = json.load(open(f'{project_root}/cam_params.json'))
         crop_params = np.load(f'{project_root}/crops/{object_name}_crop_params.npy')
@@ -165,8 +180,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process object in image space')
     parser.add_argument('--object_name', type=str, required=True, help='Object name (e.g., 0_toilet)')
     parser.add_argument('--project_root', type=str, required=True, help='Path to project root directory')
+    parser.add_argument('--matcher', type=str, default='mast3r', choices=['mast3r', 'roma'],
+                        help="Matching model")
     args = parser.parse_args()
 
     device = setup_device()
-    model = load_model(device)
+    model = load_model(device, matcher=args.matcher)
     process_object(args.object_name, args.project_root, model) 

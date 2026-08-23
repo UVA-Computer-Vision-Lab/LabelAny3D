@@ -27,6 +27,8 @@ if __name__ == "__main__":
     parser.add_argument('--end_index', type=int, default=1, help='Object index to end processing')
     parser.add_argument("--split", help="split", default="val", type=str)
     parser.add_argument("--save_dir", help="save directory", default="../experimental_results/COCO/", type=str)
+    parser.add_argument("--matcher", help="matching model", default="mast3r",
+                        choices=["mast3r", "roma"], type=str)
 
     args, extras = parser.parse_known_args()
     opt = OmegaConf.merge(OmegaConf.load(args.config), OmegaConf.from_cli(extras))
@@ -38,7 +40,7 @@ if __name__ == "__main__":
     assert (torch.cuda.is_available())
     device = f"cuda:{args.gpu_idx}"
 
-    mast3r_model = load_model(device)
+    mast3r_model = load_model(device, matcher=args.matcher)
     for i in tqdm(range(args.start_index, args.end_index)):
         image_info = loader.get_image_by_index(i)
         img_name = image_info["file_name"]

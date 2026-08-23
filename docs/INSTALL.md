@@ -98,6 +98,17 @@ This downloads:
 
 Other models (TRELLIS, MoGe) are auto-downloaded from HuggingFace at runtime.
 
+### RoMa (Optional)
+
+Alternative matcher for the pose-alignment step:
+
+```bash
+pip install romatch
+```
+
+Then pass `--matcher roma` to `batch_scripts/whole.py`. Weights download
+automatically on first use.
+
 ## 7. Blender (Optional, for Visualization)
 
 Install Blender 3.6+ and add trimesh:

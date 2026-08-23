@@ -98,6 +98,9 @@ Align reconstructed objects into the scene using depth-guided placement.
 python batch_scripts/whole.py --start_index=0 --end_index=1000 --split=val
 ```
 
+The matcher is selectable with `--matcher mast3r` (default) or `--matcher roma`.
+COCO3D was generated with `--matcher mast3r`.
+
 ### Step 8: Combine Results
 
 Combine all scene results into Omni3D format JSON.
