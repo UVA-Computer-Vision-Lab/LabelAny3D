@@ -72,9 +72,34 @@ This work builds on many open-source projects:
 - [OVMono3D](https://github.com/UVA-Computer-Vision-Lab/ovmono3d) - Open vocabulary monocular 3D detection
 
 
-## License
+## Licenses
 
-This project is licensed under the [MIT License](LICENSE).
+This repository is licensed under [Apache-2.0](LICENSE); see [NOTICE](NOTICE)
+for third-party attribution.
+
+External models keep their own terms. Unrestricted:
+
+| Component | License |
+|---|---|
+| [MoGe](https://github.com/microsoft/MoGe) | MIT |
+| [DepthPro](https://github.com/apple/ml-depth-pro) | Apple sample-code license |
+| [TRELLIS](https://github.com/microsoft/TRELLIS) | MIT |
+| [One-2-3-45](https://github.com/One-2-3-45/One-2-3-45) / Zero123-XL | Apache-2.0 / MIT |
+| [RoMa](https://github.com/Parskatt/RoMa) | MIT, DINOv2 backbone Apache-2.0 |
+| [OneFormer](https://github.com/SHI-Labs/OneFormer), [CLIPSeg](https://huggingface.co/CIDAS/clipseg-rd64-refined) | MIT, Apache-2.0 |
+
+Non-commercial, optional in our pipeline:
+
+| Component | License |
+|---|---|
+| [MASt3R](https://github.com/naver/mast3r) (bundles [DUSt3R](https://github.com/naver/dust3r)) | CC BY-NC-SA 4.0 |
+| [InvSR](https://github.com/zsyOAOA/InvSR) | NTU S-Lab 1.0 |
+| [Hunyuan3D-1](https://github.com/Tencent/Hunyuan3D-1) | Tencent Hunyuan Non-Commercial |
+| [UniDepth](https://github.com/lpiccinelli-eth/UniDepth) | CC BY-NC 4.0 |
+| [OVSAM](https://github.com/HarborYuan/ovsam), [EntityV2](https://github.com/qqlu/Entity) | S-Lab 1.0, CC BY-NC 4.0 |
+
+COCO images keep their original Flickr terms;
+[COCO3D](https://huggingface.co/datasets/uva-cv-lab/COCO3D) annotations are CC BY 4.0.
 
 [jy]: https://yaojin17.github.io
 [rr]: https://scholar.google.com/citations?user=066_RcMAAAAJ&hl=en

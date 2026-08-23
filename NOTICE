@@ -1,0 +1,42 @@
+LabelAny3D
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product includes software adapted from the third-party projects listed
+below. Their original license terms and attribution requirements continue to
+apply to the portions derived from them.
+
+================================================================================
+Gen3DSR
+https://github.com/AndreeaDogaru/Gen3DSR
+
+Licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0). Full text: https://creativecommons.org/licenses/by/4.0/
+
+CC BY 4.0 permits the distribution of adaptations under different terms
+(Section 3.b), provided attribution is retained. This NOTICE serves as that
+attribution. The following files are derived, in whole or in part, from
+Gen3DSR:
+
+  src/background_model.py
+  src/dataset_model/BaseScene.py
+  src/dataset_model/InTheWild.py
+  src/dataset_model/__init__.py
+  src/util.py               (in part)
+  src/configs/image.yaml    (in part)
+
+================================================================================
+DreamGaussian
+https://github.com/dreamgaussian/dreamgaussian
+
+Copyright (c) 2023 dreamgaussian
+Licensed under the MIT License.
+
+The following file is derived from DreamGaussian:
+
+  src/cam_utils.py
+
+================================================================================
+
+External models and datasets used by the pipeline are NOT covered by this
+project's license. Several are released under non-commercial terms. See the "Licenses"
+section of README.md for the full list.
